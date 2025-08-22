@@ -785,6 +785,11 @@
     return FT_Err_Ok;
   }
 
+  int z_verbose = 0;
+
+  void z_error(/* should be const */char*)
+  {
+  }
 
 #else /* !FT_CONFIG_OPTION_USE_ZLIB */
 
@@ -814,12 +819,6 @@
 
     return FT_THROW( Unimplemented_Feature );
   }
-
-int z_verbose = 0;
-
-void z_error(/* should be const */char*)
-{
-}
 
 #endif /* !FT_CONFIG_OPTION_USE_ZLIB */
 
