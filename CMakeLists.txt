@@ -270,7 +270,7 @@ endif ()
 
 
 # Create the options file
-file(READ "${PROJECT_SOURCE_DIR}/include/freetype/config/ftoption.h"
+file(READ "${PROJECT_SOURCE_DIR}/src/include/freetype/config/ftoption.h"
   FTOPTION_H)
 if (ZLIB_FOUND)
   string(REGEX REPLACE
@@ -309,9 +309,9 @@ if (NOT (ORIGINAL_FTOPTION_H STREQUAL FTOPTION_H))
 endif ()
 
 
-file(GLOB PUBLIC_HEADERS "include/ft2build.h" "include/freetype/*.h")
-file(GLOB PUBLIC_CONFIG_HEADERS "include/freetype/config/*.h")
-file(GLOB PRIVATE_HEADERS "include/freetype/internal/*.h")
+file(GLOB PUBLIC_HEADERS "src/include/freetype/ft2build.h" "src/include/freetype/*.h")
+file(GLOB PUBLIC_CONFIG_HEADERS "src/include/freetype/config/*.h")
+file(GLOB PRIVATE_HEADERS "src/include/freetype/internal/*.h")
 
 
 set(BASE_SRCS
