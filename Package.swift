@@ -14,14 +14,19 @@ let package = Package(
             path: "src",
             sources: [
                 "base/ftbase.c",
-                "base/ftinit.c",
-                "base/ftsystem.c",
+                "base/ftbitmap.c",
                 "base/ftdebug.c",
-                
+                "base/ftglyph.c",
+                "base/ftinit.c",
+                "base/ftstroke.c",
+                "base/ftsystem.c",
+
                 "autofit/autofit.c",
                 "bdf/bdf.c",
                 "cff/cff.c",
                 "cid/type1cid.c",
+                "gzip/ftgzip.c",
+                "lzw/ftlzw.c",
                 "pcf/pcf.c",
                 "pfr/pfr.c",
                 "psaux/psaux.c",
