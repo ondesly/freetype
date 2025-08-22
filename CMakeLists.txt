@@ -254,11 +254,11 @@ if (UNIX)
       FTCONFIG_H "${FTCONFIG_H}")
   endif ()
 else ()
-  file(READ "${PROJECT_SOURCE_DIR}/include/freetype/config/ftconfig.h"
+  file(READ "${PROJECT_SOURCE_DIR}/src/include/freetype/config/ftconfig.h"
     FTCONFIG_H)
 endif ()
 
-set(FTCONFIG_H_NAME "${PROJECT_BINARY_DIR}/include/freetype/config/ftconfig.h")
+set(FTCONFIG_H_NAME "${PROJECT_BINARY_DIR}/src/include/freetype/config/ftconfig.h")
 if (EXISTS "${FTCONFIG_H_NAME}")
   file(READ "${FTCONFIG_H_NAME}" ORIGINAL_FTCONFIG_H)
 else ()
@@ -298,7 +298,7 @@ if (BROTLIDEC_FOUND)
     FTOPTION_H "${FTOPTION_H}")
 endif ()
 
-set(FTOPTION_H_NAME "${PROJECT_BINARY_DIR}/include/freetype/config/ftoption.h")
+set(FTOPTION_H_NAME "${PROJECT_BINARY_DIR}/src/include/freetype/config/ftoption.h")
 if (EXISTS "${FTOPTION_H_NAME}")
   file(READ "${FTOPTION_H_NAME}" ORIGINAL_FTOPTION_H)
 else ()
@@ -415,14 +415,14 @@ target_include_directories(
   freetype
     PUBLIC
       $<INSTALL_INTERFACE:include/freetype2>
-      $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
-      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+      $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/src/include>
+      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/include>
     PRIVATE
-      ${CMAKE_CURRENT_BINARY_DIR}/include
-      ${CMAKE_CURRENT_SOURCE_DIR}/include
+      ${CMAKE_CURRENT_BINARY_DIR}/src/include
+      ${CMAKE_CURRENT_SOURCE_DIR}/src/include
       
       # Make <ftconfig.h> available for builds/unix/ftsystem.c.
-      ${CMAKE_CURRENT_BINARY_DIR}/include/freetype/config
+      ${CMAKE_CURRENT_BINARY_DIR}/src/include/freetype/config
 )
 
 
@@ -476,15 +476,15 @@ include(GNUInstallDirs)
 if (NOT SKIP_INSTALL_HEADERS AND NOT SKIP_INSTALL_ALL)
   install(
     # Note the trailing slash in the argument to `DIRECTORY'!
-    DIRECTORY ${PROJECT_SOURCE_DIR}/include/
+    DIRECTORY ${PROJECT_SOURCE_DIR}/src/include/
       DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freetype2
       COMPONENT headers
       PATTERN "internal" EXCLUDE
       PATTERN "ftconfig.h" EXCLUDE
       PATTERN "ftoption.h" EXCLUDE)
   install(
-    FILES ${PROJECT_BINARY_DIR}/include/freetype/config/ftconfig.h
-          ${PROJECT_BINARY_DIR}/include/freetype/config/ftoption.h
+    FILES ${PROJECT_BINARY_DIR}/src/include/freetype/config/ftconfig.h
+          ${PROJECT_BINARY_DIR}/src/include/freetype/config/ftoption.h
       DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/freetype2/freetype/config
       COMPONENT headers)
 endif ()
